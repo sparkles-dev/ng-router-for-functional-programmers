@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FooComponent } from './foo/foo.component';
 import { BarComponent } from './bar/bar.component';
 import { FooGuard } from './foo/foo.guard';
+import { BAR_GUARD_TOKEN, barGuard } from './bar/bar.guard';
 
 const routes: Routes = [
   {
@@ -15,7 +16,8 @@ const routes: Routes = [
       },
       {
         path: 'bar',
-        component: BarComponent
+        component: BarComponent,
+        canActivate: [ BAR_GUARD_TOKEN ]
       }
     ]
   }
@@ -25,7 +27,11 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   providers: [
-    FooGuard
+    FooGuard,
+    {
+      provide: BAR_GUARD_TOKEN,
+      useFactory: barGuard
+    }
   ]
 })
 export class AppRoutingModule { }
