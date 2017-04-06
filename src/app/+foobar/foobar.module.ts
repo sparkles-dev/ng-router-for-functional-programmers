@@ -5,6 +5,7 @@ import { FooBarComponent } from './foo-bar/foo-bar.component';
 import { JsonDumpComponent } from '../shared/json-dump/json-dump.component';
 import { FOOBAR_RESOLVER_ALPHA, foobarResolverAlpha, FOOBAR_RESOLVER_BETA, foobarResolverBeta } from './foobar.resolver';
 import { SharedModule } from '../shared/shared.module';
+import { RemoteDataService } from '../shared/remote-data.service';
 
 const routes: Routes = [
   {
@@ -32,7 +33,8 @@ const routes: Routes = [
     },
     {
       provide: FOOBAR_RESOLVER_BETA,
-      useFactory: foobarResolverBeta
+      useFactory: foobarResolverBeta,
+      deps: [ RemoteDataService ]
     }
   ]
 })

@@ -1,6 +1,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { JsonDumpComponent } from './json-dump/json-dump.component';
+import { RemoteDataService } from './remote-data.service';
 
 @NgModule({
   imports: [ CommonModule ],
@@ -13,7 +14,9 @@ export class SharedModule {
 
     return {
       ngModule: SharedModule,
-      providers: []
+      providers: [
+        RemoteDataService
+      ]
     };
   }
 }
