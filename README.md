@@ -55,7 +55,8 @@ export const BAR_GUARD_TOKEN = new InjectionToken<CanActivate>('bar.guard');
 
 export function barGuard() {
 
-  return (next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean => {
+  return (next: ActivatedRouteSnapshot, state: RouterStateSnapshot):
+      Observable<boolean> | Promise<boolean> | boolean => {
 
     return Observable.of(true);
   }
@@ -121,7 +122,8 @@ export const FOOBAR_RESOLVER_ALPHA = new InjectionToken<Resolve<any>>('foobar-re
 
 export function foobarResolverAlpha() {
 
-  return (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any => {
+  return (route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
+      Observable<any> | Promise<any> | any => {
 
     return Observable.of({ foo: 'bar' }).delay(700); // <-- we're travelling on a sloooow network ;-)
   }
@@ -145,7 +147,8 @@ export const FOOBAR_RESOLVER_BETA = new InjectionToken<Resolve<any>>('foobar-res
 
 export function foobarResolverBeta(remoteData: RemoteDataService) {
 
-  return (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any => {
+  return (route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
+      Observable<any> | Promise<any> | any => {
 
     return remoteData.fetchAllTheThings();
   }
@@ -170,4 +173,4 @@ For the dependency of `RemoteDataService` to get injected, it needs to be explic
     }
   ]
 })
-```ts
+```
