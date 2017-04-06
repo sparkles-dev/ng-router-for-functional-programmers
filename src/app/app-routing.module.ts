@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FooComponent } from './foo/foo.component';
 import { BarComponent } from './bar/bar.component';
+import { FooGuard } from './foo/foo.guard';
 
 const routes: Routes = [
   {
@@ -9,7 +10,8 @@ const routes: Routes = [
     children: [
       {
         path: 'foo',
-        component: FooComponent
+        component: FooComponent,
+        canActivate: [ FooGuard ]
       },
       {
         path: 'bar',
@@ -21,6 +23,9 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    FooGuard
+  ]
 })
 export class AppRoutingModule { }
