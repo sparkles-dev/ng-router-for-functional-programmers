@@ -1,4 +1,25 @@
-<h1>
-  {{title}}
-</h1>
-<router-outlet></router-outlet>
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <h1>
+        {{title}}
+      </h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s6">
+      <a [routerLink]="['/foo']" class="waves-effect waves-light btn">Foo</a>
+    </div>
+    <div class="col s6">
+      <a [routerLink]="['/bar']" class="waves-effect waves-light btn">Bar</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</div>
