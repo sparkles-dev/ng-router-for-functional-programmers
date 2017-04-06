@@ -18,6 +18,10 @@ const routes: Routes = [
         path: 'bar',
         component: BarComponent,
         canActivate: [ BAR_GUARD_TOKEN ]
+      },
+      {
+        path: 'foobar',
+        loadChildren: './+foobar/foobar.module#FooBarModule'
       }
     ]
   }

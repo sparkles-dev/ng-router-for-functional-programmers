@@ -28,6 +28,6 @@ export function barGuard() {
 
   return (next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean => {
 
-    return Observable.of(false);
+    return Observable.of(true);
   }
 }
