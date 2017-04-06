@@ -26,10 +26,12 @@ How to implement `CanActivate` and `Resolve` with lambda expressions.
 The class `FooGuard` implements a `CanActivate` guard in classical object-oriented programming style.
 
 Angular's routing framework defines an interface that `FooGuard` implements.
-The implementation class is annotated with `@Injectable()` -- in TypeScript jargon, the class
-is actually 'decorated' but it works pretty much the same way as annotations in other oop languages.
-Finally, the class is hooked into Angular's dependendency injection and routing framework by its
-class token, e.g. with `canActivate: [ FooGuard ]` (in JavaScript land, `FooGuard` is a reference to the constructor function).
+The implementation class is annotated with `@Injectable()` — in TypeScript jargon, the class
+is actually _decorated_ but it works pretty much the same way as annotations do in other oop languages.
+
+To make things work, the class is hooked into Angular's dependendency injection and routing framework by its
+class token. In JavaScript land, `FooGuard` is a reference to the constructor function and thus we
+write `canActivate: [ FooGuard ]` and `providers: [ FooGuard ]`.
 
 ```ts
 @Injectable()
@@ -63,18 +65,18 @@ export function barGuard() {
 }
 ```
 
-`barGuard` serves as a factory provider function and returns a lambda expression, a so-called arrow function in TypeScript terms.
+`barGuard` serves as a factory function and returns a lambda expression, a so-called arrow function in TypeScript terms.
 The call signature of the lambda is equivalent to that defined by the `canActivate()` function in the `CanActivate` interface.
 
 The guard implementation must yet be hooked into Angular's dependency injection.
 For that purpose, a factory provider will be registered with `{ provide: BAR_GUARD_TOKEN, useFactory: barGuard }`.
-In the route definition, the guard is referenced by `BAR_GUARD_TOKEN`, i.e. `canActivate: [ BAR_GUARD_TOKEN ]`.
+In the route definition, the guard is referenced by that token, i.e. `canActivate: [ BAR_GUARD_TOKEN ]`.
 
 When activating the '/bar' route, Angular resolves the token, executes the factory function,
 and calls the lambda expression returned by the factory.
 The return value of the lambda expression tells the router to either allow (returning `true`)
 or deny (returning `false`) navigation.
-If allowed, the component shows up on the screen telling you that "bar works!".
+If allowed, a component shows up on the screen telling you that "bar works!".
 
 Using the guard in a route definition looks a little bit different for the object-oriented and the functional approach.
 The following code snippet gives us a good understanding showing how things are wired up:
@@ -98,8 +100,8 @@ const routes: Routes = [
 @NgModule({
   /* .. */
   providers: [
-    FooGuard, // <-- a class provider
-    { // --> a factory provider
+    FooGuard, // <-- a class provider for the oop aproach
+    {         // --> a factory provider for the functional way
       provide: BAR_GUARD_TOKEN,
       useFactory: barGuard
     }
@@ -114,7 +116,7 @@ export class AppRoutingModule { }
 In the same way that `CanActivate` guards are implemented in functional programming style,
 it's also possible to implement `Resolve`.
 
-Again, write a factory that returns a lambda expression whose call signature is equivalent to `Resolve#resolve()`.
+Again, write a factory that returns a lambda expression whose call signature is equivalent to `resolve()` defined by the `Resolve` interface.
 It needs to registered with dependency injection and referenced in route definition by its corresponding token `FOOBAR_RESOLVER_ALPHA`.
 
 ```ts
@@ -132,15 +134,15 @@ export function foobarResolverAlpha() {
 
 
 In object-oriented style, it's possible to inject services into `CanActivate` and
-`Resolve` implementations, since both are "annotated" with `@Injectable()` decorator.
+`Resolve` implementations, since the implementing classes are "annotated" with `@Injectable()` decorator.
 
 In functional programming style, we can do the same thing by writing the dependency as an
 argument of the factory function.
-To make it work, we need to add the dependency to the factory provider:
+This works by adding a dependency to the factory provider:
 `{ provide: FOOBAR_RESOLVER_BETA, useFactory: foobarResolverBeta, deps: [ RemoteDataService ]}`.
 
-An instance of `RemoteDataService` is then injected to the factory function and the
-resolve lambda expression returns data by delegating to the service.
+An instance of `RemoteDataService` is then injected to the factory function and the lambda-style resolver
+is going to return data by delegating to the service.
 
 ```ts
 export const FOOBAR_RESOLVER_BETA = new InjectionToken<Resolve<any>>('foobar-resolver.beta');
@@ -156,8 +158,8 @@ export function foobarResolverBeta(remoteData: RemoteDataService) {
 }
 ```
 
-Again, the functions need to be registered in dependency injection.
-For the dependency of `RemoteDataService` to get injected, it needs to be explicitly declared in the factory provider:
+Like in the first example, the functions need to be registered for Angular's dependency injection.
+The relevant code snippet looks like this:
 
 ```ts
 @NgModule({
