@@ -1,8 +1,13 @@
 # Functional programming with the Angular router
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+> A [complete, narrative story](https://medium.com/@davidh_23/functional-programming-with-the-angular-router-8e1053440a82) is published on [my Medium profile](https://medium.com/@davidh_23)
+
+
+---
 
 #### Getting Started
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
 Run `yarn install` to set-up a local development environment.
 
