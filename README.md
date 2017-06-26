@@ -5,6 +5,9 @@
 
 ---
 
+[![CircleCI](https://circleci.com/gh/spektrakel-blog/ng-router-for-functional-programmers/tree/master.svg?style=svg)](https://circleci.com/gh/spektrakel-blog/ng-router-for-functional-programmers/tree/master)
+
+
 #### Getting Started
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
