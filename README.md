@@ -1,11 +1,13 @@
 # Functional programming with the Angular router
 
-> A [complete, narrative story](https://medium.com/@davidh_23/functional-programming-with-the-angular-router-8e1053440a82) is published on [my Medium profile](https://medium.com/@davidh_23)
+
+> A [complete, narrative story](https://medium.com/spektrakel-blog/functional-programming-with-the-angular-router-8e1053440a82) is published on [the Spektrakel blog at medium.com](https://medium.com/spektrakel-blog)
 
 
 ---
 
 [![CircleCI](https://circleci.com/gh/spektrakel-blog/ng-router-for-functional-programmers/tree/master.svg?style=svg)](https://circleci.com/gh/spektrakel-blog/ng-router-for-functional-programmers/tree/master)
+[![Greenkeeper badge](https://badges.greenkeeper.io/spektrakel-blog/ng-router-for-functional-programmers.svg)](https://greenkeeper.io/)
 
 
 #### Getting Started
