@@ -1,5 +1,7 @@
 # Functional programming with the Angular router
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/spektrakel-blog/ng-router-for-functional-programmers.svg)](https://greenkeeper.io/)
+
 > A [complete, narrative story](https://medium.com/@davidh_23/functional-programming-with-the-angular-router-8e1053440a82) is published on [my Medium profile](https://medium.com/@davidh_23)
 
 
