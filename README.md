@@ -7,7 +7,7 @@
 ---
 
 [![CircleCI](https://circleci.com/gh/spektrakel-blog/ng-router-for-functional-programmers/tree/master.svg?style=svg)](https://circleci.com/gh/spektrakel-blog/ng-router-for-functional-programmers/tree/master)
-[![Greenkeeper badge](https://badges.greenkeeper.io/spektrakel-blog/ng-router-for-functional-programmers.svg)](https://greenkeeper.io/)
+[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovateapp.com/)
 
 
 #### Getting Started
